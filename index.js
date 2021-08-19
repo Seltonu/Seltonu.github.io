@@ -41,29 +41,63 @@ function resized() {
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight, WEBGL);
     background(30);
-    stroke(255)
-    a = 360;
+    stroke(255);
+    frameRate(30);
+    sphere_rot = 360;
+    box_rot = 360;
+    console.log("made it to setup")
 }
 
 function draw() {
     background(30)
 
-    if(a == 0) {
-        a = 360
+    if(sphere_rot == 0) {
+        sphere_rot = 360
     }
-    a = a - 0.0005;
-
-    push();
-    translate(width/2.8,height/3,-200);
-    noFill();
-    rotate(a, [0.0,1.0,0.0]);
-    sphere(height/3);
-    pop();
+    sphere_rot = sphere_rot - 0.0015;
+    if(box_rot == 0) {
+        box_rot = 360
+    }
+    box_rot = box_rot - 0.0035;
 
     push();
     fill(30);
-    translate(width/-2.5, height/-2.5, -100);
-    rotate(a*5, [0.1, 1.0, 1.0]);
-    box(100);
+    // noFill();
+    translate(-(width/2.4), -(height/2.4), -200)
+    rotate(box_rot, [0.2,1.0,1.0]);
+    box(200);
     pop();
+
+    //smaller box
+    push();
+    fill(30);
+    // noFill();
+    translate(-(width/4.4), -(height/4.0), 0)
+    rotate(-box_rot*5, [0.2,1.0,1.0]);
+    box(60);
+    pop();
+
+    //smallest box
+    push();
+    fill(30);
+    // noFill();
+    translate(-(width/3.4), -(height/5.4), 0)
+    rotate(-box_rot*10, [1.0,0.2,1.0]);
+    box(30);
+    pop();
+
+    //sphere
+    push();
+    // noFill();
+    fill(30);
+    // translate(600, 300, 0)
+    translate(width*0.5, height*0.4, -200)
+    rotate(sphere_rot, [0.0, 1.0, 0.0]);
+    sphere(height/2.8);
+    pop();
+
+
+
+    console.log("test");
+    console.log("Width: " + window.innerWidth + "Height: " + window.innerHeight);
 }
