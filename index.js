@@ -116,7 +116,7 @@ function draw() {
     strokeWeight(2);
     fill(180);
     translate(0,0,0)
-    line(0, -360, 0, 0, height*0.45, 0);
+    line(0, -(height*0.35), 0, 0, height*0.45, 0);
     pop();
     
     //particles
@@ -128,6 +128,6 @@ function draw() {
     }
     pop();
 
-    console.log("Particles: " + particles.length)
+    // console.log("Particles: " + particles.length)
 
 }
