@@ -7,7 +7,7 @@ burgerIcon.addEventListener("click", () => {
 
 // window.addEventListener('resize', resizeCanvas, false);
 
-// function draw() {
+// function drawL() {
 //     const canvas = document.querySelector('#canvas')
 //     if (!canvas.getContext) {
 //         print("Couldn't get canvas context");
@@ -28,14 +28,20 @@ burgerIcon.addEventListener("click", () => {
 // function resizeCanvas() {
 //     canvas.width = window.innerWidth;
 //     canvas.height = window.innerHeight;
-//     draw();
+//     drawL();
 // }
 // resizeCanvas();
+
+
+// drawL();
+
+
+
 
 window.addEventListener("resize", resized, false);
 
 function resized() {
-    resizeCanvas(window.innerWidth, window.innerHeight)
+    resizeCanvas(window.innerWidth, window.innerHeight) //WebGL canvas
 }
 
 function setup() {
@@ -63,7 +69,7 @@ function draw() {
     push();
     fill(30);
     // noFill();
-    translate(-(width/2.4), -(height/2.4), -200)
+    translate(-(width/2.0), -(height/2.4), -200)
     rotate(box_rot, [0.2,1.0,1.0]);
     box(200);
     pop();
@@ -72,7 +78,7 @@ function draw() {
     push();
     fill(30);
     // noFill();
-    translate(-(width/4.4), -(height/4.0), 0)
+    translate(-(width/4.0), -(height/4.0), 0)
     rotate(-box_rot*5, [0.2,1.0,1.0]);
     box(60);
     pop();
@@ -81,7 +87,7 @@ function draw() {
     push();
     fill(30);
     // noFill();
-    translate(-(width/3.4), -(height/5.4), 0)
+    translate(-(width/3.0), -(height/5.4), 0)
     rotate(-box_rot*10, [1.0,0.2,1.0]);
     box(30);
     pop();
@@ -97,7 +103,7 @@ function draw() {
     pop();
 
 
+    //random dots
+    
 
-    console.log("test");
-    console.log("Width: " + window.innerWidth + "Height: " + window.innerHeight);
 }
