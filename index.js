@@ -35,32 +35,74 @@ burgerIcon.addEventListener("click", () => {
 
 // drawL();
 
+//particle modified from example here: https://p5js.org/examples/simulate-particles.html
+let particles = [];
+class Particle {
+    constructor() {
+        this.x = random(-width, width);
+        this.y = random(-height, height);
+        this.z = random(0,200);
+        this.r = 2;
+        this.xSpeed = random(-1,1);
+        this.ySpeed = random(-1, 1.5);
+    }
+    createParticle() {
+        noStroke();
+        fill(180);
+        circle(this.x,this.y,this.r);
+    }
+    moveParticle() {
+        if(this.x < -width || this.x > width)
+          this.xSpeed*=-1;
+        if(this.y < -height || this.y > height)
+          this.ySpeed*=-1;
+        this.x+=this.xSpeed;
+        this.y+=this.ySpeed;
+    }
+    joinParticles(particles) {
+        particles.forEach(element =>{
+          let dis = dist(this.x,this.y,element.x,element.y);
+          if(dis<205) {
+            stroke('rgba(255,255,255,0.04)');
+            line(this.x,this.y,element.x,element.y);
+          }
+          let particles = [];
+        });
+      }
+}
 
 
 
-window.addEventListener("resize", resized, false);
+window.addEventListener("resize", resize_canvas, false);
 
-function resized() {
+function resize_canvas() {
     resizeCanvas(window.innerWidth, window.innerHeight) //WebGL canvas
 }
 
 function setup() {
-    createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+    canvas = createCanvas(window.innerWidth, window.innerHeight, WEBGL);
     background(30);
-    stroke(255);
+    stroke(200);
     frameRate(30);
     sphere_rot = 360;
     box_rot = 360;
     console.log("made it to setup")
+
+    //particles
+    for(let i = 0;i<width/10;i++){
+        particles.push(new Particle());
+      }
 }
 
 function draw() {
+    // stroke('rgba(255,255,255,0.04)');
     background(30)
 
     if(sphere_rot == 0) {
         sphere_rot = 360
     }
     sphere_rot = sphere_rot - 0.0015;
+    
     if(box_rot == 0) {
         box_rot = 360
     }
@@ -68,7 +110,6 @@ function draw() {
 
     push();
     fill(30);
-    // noFill();
     translate(-(width/2.0), -(height/2.4), -200)
     rotate(box_rot, [0.2,1.0,1.0]);
     box(200);
@@ -77,7 +118,6 @@ function draw() {
     //smaller box
     push();
     fill(30);
-    // noFill();
     translate(-(width/4.0), -(height/4.0), 0)
     rotate(-box_rot*5, [0.2,1.0,1.0]);
     box(60);
@@ -86,7 +126,6 @@ function draw() {
     //smallest box
     push();
     fill(30);
-    // noFill();
     translate(-(width/3.0), -(height/5.4), 0)
     rotate(-box_rot*10, [1.0,0.2,1.0]);
     box(30);
@@ -94,16 +133,20 @@ function draw() {
 
     //sphere
     push();
-    // noFill();
     fill(30);
-    // translate(600, 300, 0)
     translate(width*0.5, height*0.4, -200)
     rotate(sphere_rot, [0.0, 1.0, 0.0]);
     sphere(height/2.8);
     pop();
 
-
-    //random dots
     
+    //particles
+    push();
+    for(let i = 0;i<particles.length;i++) {
+        particles[i].createParticle();
+        particles[i].moveParticle();
+        particles[i].joinParticles(particles.slice(i));
+    }
+    pop();
 
 }
