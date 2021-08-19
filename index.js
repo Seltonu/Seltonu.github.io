@@ -5,43 +5,13 @@ burgerIcon.addEventListener("click", () => {
     navbarMenu.classList.toggle("is-active")
 });
 
-// window.addEventListener('resize', resizeCanvas, false);
-
-// function drawL() {
-//     const canvas = document.querySelector('#canvas')
-//     if (!canvas.getContext) {
-//         print("Couldn't get canvas context");
-//         return;
-//     }
-//     const ctx = canvas.getContext('2d');
-//     ctx.canvas.width = window.innerWidth;
-//     ctx.canvas.height = window.innerHeight;
-    
-//     ctx.strokeStyle = 'white';
-//     ctx.lineWidth = 2;
-    
-//     ctx.beginPath();
-//     ctx.moveTo(ctx.canvas.width/2, 0);
-//     ctx.lineTo(ctx.canvas.width/2, ctx.canvas.height*0.9);
-//     ctx.stroke();
-// }
-// function resizeCanvas() {
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-//     drawL();
-// }
-// resizeCanvas();
-
-
-// drawL();
-
 //particle modified from example here: https://p5js.org/examples/simulate-particles.html
 let particles = [];
 class Particle {
     constructor() {
         this.x = random(-width, width);
         this.y = random(-height, height);
-        this.z = random(0,200);
+        this.z = random(0,500);
         this.r = 2;
         this.xSpeed = random(-1,1);
         this.ySpeed = random(-1, 1.5);
@@ -71,8 +41,6 @@ class Particle {
       }
 }
 
-
-
 window.addEventListener("resize", resize_canvas, false);
 
 function resize_canvas() {
@@ -80,10 +48,13 @@ function resize_canvas() {
 }
 
 function setup() {
-    canvas = createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+    background_canvas = createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+    // background_canvas.parent("canvas_div");
+    background_canvas.position(document.querySelector('#nav-links').height, 0, 'fixed');
+    background_canvas.style('z-index', '-2');
     background(30);
     stroke(200);
-    frameRate(30);
+    frameRate(60);
     sphere_rot = 360;
     box_rot = 360;
     console.log("made it to setup")
@@ -102,7 +73,7 @@ function draw() {
         sphere_rot = 360
     }
     sphere_rot = sphere_rot - 0.0015;
-    
+
     if(box_rot == 0) {
         box_rot = 360
     }
@@ -139,6 +110,12 @@ function draw() {
     sphere(height/2.8);
     pop();
 
+    push();
+    stroke(255);
+    strokeWeight(5);
+    fill(180);
+    line(width/2, 0, width/2, height);
+    pop();
     
     //particles
     push();
@@ -148,5 +125,7 @@ function draw() {
         particles[i].joinParticles(particles.slice(i));
     }
     pop();
+
+    console.log("Particles: " + particles.length)
 
 }
