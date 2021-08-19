@@ -50,9 +50,8 @@ function resize_canvas() {
 function setup() {
     background_canvas = createCanvas(window.innerWidth, window.innerHeight, WEBGL);
     // background_canvas.parent("canvas_div");
-    background_canvas.position(document.querySelector('#nav-links').height, 0, 'fixed');
+    background_canvas.position(0, 0, 'fixed');
     background_canvas.style('z-index', '-2');
-    line_header_height = document.querySelector("#line_header").height
     background(30);
     stroke(200);
     frameRate(60);
@@ -116,7 +115,7 @@ function draw() {
     strokeWeight(2);
     fill(180);
     translate(0,0,0)
-    line(0, -(height*0.35), 0, 0, height*0.45, 0);
+    line(0, -(height*0.40), 0, 0, height*0.45, 0);
     pop();
     
     //particles
