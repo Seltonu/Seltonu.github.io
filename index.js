@@ -118,13 +118,13 @@ function draw() {
     line(0, -(height*0.40), 0, 0, height*0.45, 0);
     pop();
     
-    //particles
-    push();
-    for(let i = 0;i<particles.length;i++) {
-        particles[i].createParticle();
-        particles[i].moveParticle();
-        particles[i].joinParticles(particles.slice(i));
-    }
+    // //particles
+    // push();
+    // for(let i = 0;i<particles.length;i++) {
+    //     particles[i].createParticle();
+    //     particles[i].moveParticle();
+    //     particles[i].joinParticles(particles.slice(i));
+    // }
     pop();
 
     // console.log("Particles: " + particles.length)
