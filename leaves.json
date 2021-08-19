@@ -1,0 +1,34 @@
+{
+    "Button_1": {
+        "text": "About",
+        "link": "https://seltonu.github.io/"
+    },
+    "Button_2": {
+        "text": "Resume",
+        "link": "/Resume.pdf"
+    },
+    "Button_3": {
+        "text": "LinkedIn",
+        "link": "https://www.linkedin.com/in/ssgutier/"
+    },
+    "Button_4": {
+        "text": "Github",
+        "link": "https://github.com/Seltonu"
+    },
+    "Button_5": {
+        "text": "Instagram",
+        "link": "https://www.instagram.com/ssgutier/"
+    },
+    "Button_6": {
+        "text": "Twitter",
+        "link": "https://twitter.com/ssgutier"
+    },
+    "Button_7": {
+        "text": "Youtube",
+        "link": "https://www.youtube.com/channel/UCC3xJXXuF0osQevOUyrI9pA"
+    },
+    "Button_8": {
+        "text": "Placeholder",
+        "link": "https://seltonu.github.io/"
+    }
+}
