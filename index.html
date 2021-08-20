@@ -2,9 +2,11 @@
 <style>
     html,
     body {
-        max-width: 100%;
+        /* max-width: 100%; */
+        width: 100%;
         overflow-x: hidden;
         overflow-y: hidden;
+        position: fixed;
     }
 </style>
 
@@ -18,33 +20,31 @@
 <!-- <body style="background-color:#2C2F33; color:#FFFFFF"> -->
 
 
+<nav class="navbar has-background-black-ter">
+    <div class="navbar-brand">
+        <a class="is-size-3 has-text-light px-3 py-1" onclick='leaves_show()'>
+            Steven Gutierrez
+        </a>
+        <a class="navbar-burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu has-background-black-ter px-3" id="nav-links">
+        <div class="navbar-end">
+            <a class="navbar-item has-text-light has-background-black-ter" href="blog.html"> Blog</a>
+            <a class="navbar-item has-text-light has-background-black-ter"> Projects</a>
+            <a class="navbar-item has-text-light has-background-black-ter" onclick='contact_show()'> Contact</a>
+        </div>
+    </div>
+</nav>
+
 <body class="has-text-light">
-
-    <nav class="navbar has-background-black-ter">
-        <div class="navbar-brand">
-            <a class="is-size-3 has-text-light px-3 py-1">
-                Steven Gutierrez
-            </a>
-            <a class="navbar-burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </div>
-
-        <div class="navbar-menu has-background-black-ter px-3" id="nav-links">
-            <div class="navbar-end">
-                <a class="navbar-item has-text-light has-background-black-ter"> Blog</a>
-                <a class="navbar-item has-text-light has-background-black-ter"> Projects</a>
-                <a class="navbar-item has-text-light has-background-black-ter"> Contact</a>
-            </div>
-        </div>
-    </nav>
-
     <!-- All contained in front of the WebGL canvas -->
-    <div id="background_canvas">
-        <script src="index.js"></script>
-        <script src="p5.js"></script>
+    
+    <div id="leaves_columns">
 
         <div class="columns is-multiline is-mobile is-centered my-4">
             <!-- Top Spacer -->
@@ -53,19 +53,20 @@
             <!-- Begin top right leaves -->
             <div class="column is-half"></div>
             <div class="column is-half">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_1">About Me</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_2">Resume</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_3">LinkedIn</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <!-- <a class="has-text-light my-4 mx-5" href="https://github.com/Seltonu">Github</a> -->
+                <button class="button is-ghost has-text-light my-4" id="button_4">Github</button>
             </div>
 
             <!-- Middle Spacer -->
@@ -73,19 +74,19 @@
 
             <!-- Begin bottom left leaves -->
             <div class="column is-half has-text-right">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_5">Instagram</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half has-text-right">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_6">Twitter</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half has-text-right">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_7">Youtube</button>
             </div>
             <div class="column is-half"></div>
             <div class="column is-half has-text-right">
-                <button class="button is-ghost has-text-light my-4">Hello</button>
+                <button class="button is-ghost has-text-light my-4" id="button_8">Twitch</button>
             </div>
             <div class="column is-half"></div>
             
@@ -94,6 +95,20 @@
         </div>
 
     </div>
+
+    <div id="contact_info">
+        <div class="columns is-multiline has-text-light has-text-centered my-6">
+            <div class="column is-full"></div>
+            <div class="column is-full is-size-3">Steven Gutierrez</div>
+            <div class="column is-full">steven.s.gutier@gmail.com</div>
+            <div class="column is-full">(310) 755-9488</div>
+            <div class="column is-full">San Jose, CA</div>
+        </div>
+    </div>
+
+
 </body>
+<script src="index.js"></script>
+<script src="p5.js"></script>
 
 </html>
