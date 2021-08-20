@@ -124,15 +124,15 @@ function setup() {
     background_canvas.style('z-index', '-2');
     background(30);
     stroke(200);
-    frameRate(50);
+    frameRate(60);
     sphere_rot = 360;
     box_rot = 360;
     // console.log("made it to setup")
 
-    // //particles
-    // for(let i = 0;i<width/10;i++){
-    //     particles.push(new Particle());
-    //   }
+    //particles
+    for(let i = 0;i<width/12;i++){
+        particles.push(new Particle());
+      }
 }
 
 function draw() {
@@ -190,14 +190,14 @@ function draw() {
         pop();
     }
     
-    // //particles
-    // push();
-    // for(let i = 0;i<particles.length;i++) {
-    //     particles[i].createParticle();
-    //     particles[i].moveParticle();
-    //     particles[i].joinParticles(particles.slice(i));
-    // }
-    // pop();
+    //particles
+    push();
+    for(let i = 0;i<particles.length;i++) {
+        particles[i].createParticle();
+        particles[i].moveParticle();
+        particles[i].joinParticles(particles.slice(i));
+    }
+    pop();
 
     // console.log("Particles: " + particles.length)
 
