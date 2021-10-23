@@ -92,6 +92,7 @@
 
 <script>
     var url = new URL(window.location.href);
+    var url_link = window.location.href;
     topic = "comics" // Default show comics
     
     if (url.searchParams.has('comics')){
@@ -125,18 +126,30 @@
     var previous = function() {
         image_count -= 1;
         imageCard.src = topic + "/" + image_count + ".png";
+        // url.searchParams.set(topic, (parseInt(url.searchParams.get(topic)) - 1));
+        insertUrlParam(topic, image_count);
     }
     var next = function() {
         image_count += 1;
         imageCard.src = topic + "/" + image_count + ".png";
+        insertUrlParam(topic, image_count);
     }
     var gotoPage = function(page) {
         // image_count = page;
         image_count = gotoBox.value
         console.log(image_count)
         imageCard.src = topic + "/" + image_count + ".png";
+        insertUrlParam(topic, image_count);
     }
 
+    function insertUrlParam(key, value) {
+    if (history.pushState) {
+        let searchParams = new URLSearchParams(window.location.search);
+        searchParams.set(key, value);
+        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
+        window.history.pushState({path: newurl}, '', newurl);
+    }
+}
 
 
 </script>
