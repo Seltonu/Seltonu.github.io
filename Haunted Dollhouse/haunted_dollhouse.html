@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunted Dollhouse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8a90f91dac.js" crossorigin="anonymous"></script>
+    <script src='http://use.edgefonts.net/emilys-candy.js'></script>
+</head>
+
+<script>
+    var comic = "Comics/FrogToad/frogtoad_1.png";
+    var image_count = 1;
+</script>
+
+<body style="background-color: #f8aff2;">
+    <style>
+        .border,.border-bottom {
+            border-color: #d470a2 !important;
+        }
+    </style>
+
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="row border-bottom border-5">
+            <div class="col-2"></div>
+            <div class="col-8 d-flex align-items-center justify-content-center">
+                <i class="fas fa-heart fa-3x me-3"></i>
+                <img style="width: 80%" src="Assets/banner.png" alt="">
+                <i class="fas fa-heart fa-3x me-3"></i>
+            </div>
+            <!-- <div class="col-2"></div>
+            <div class="d-flex align-items-center justify-content-center border-bottom">
+
+            </div> -->
+        </div>
+
+        <!-- Navbar -->
+        <div class="row mt-3">
+            <div class="col-2">
+                <img style="width: 100%; height: 100%;" src="Assets/art_button.png" alt="Art Button"></img>
+            </div>
+
+            <div class="col-2">
+                <a href="?cryptid_sightings=1">
+                    <img style="width: 140%; height: 100%;" src="Assets/cryptid_sightings_button.png" alt="Sightings Button"></img>
+                </a>
+            </div>
+            
+            <div class="col"></div>
+            
+            <div class="col-2">
+                <img style="width: 100%; height: 100%;" src="Assets/blog_button.png" alt="Blog Button"></img>
+            </div>
+        </div>
+
+        <!-- Comic area -->
+        <div class="row mt-3">
+            <div class="col-2"></div>
+            <div class="col-8 d-flex justify-content-center align-center">
+                <div class="align-center">
+                    <img class="card-img-top" id="imageCard" src="" alt="No more images">
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <!-- Comic Navigation -->
+        <div class="row mt-3 mb-5">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <i class="fas fa-arrow-left me-4 fa-2x" onclick="previous()"></i>
+                <i class="fas fa-arrow-right fa-2x me-2" onclick="next()"></i>
+                <b>Go to &nbsp&nbsp</b><input style="width: 8%;" class="form-text" type="text" placeholder="420" aria-label="default input example" id="gotoBox"></input>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+            </div>
+            <div class="col-auto">
+                Message me: dani@gmail.com
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-bottom justify-content-end">
+    </div>
+</body>
+
+<script>
+    var url = new URL(window.location.href);
+    topic = "comics" // Default show comics
+    
+    if (url.searchParams.has('comics')){
+        topic = "comics"
+        image_count = url.searchParams.get('comics')
+    }
+    else if (url.searchParams.has('cryptid_sightings')) {
+        topic = "cryptid_sightings"
+        image_count = url.searchParams.get('cryptid_sightings')
+    }
+    else if (url.searchParams.has('art')) {
+        topic = "Art"
+        image_count = url.searchParams.get('art')
+    }
+    else if (url.searchParams.has('blog')) {
+        topic = "Blog"
+        image_count = url.searchParams.get('blog')
+    }
+    
+    document.getElementById('imageCard').src = topic + "/" + image_count + ".png";
+    var imageCard = document.getElementById("imageCard");
+    var gotoBox = document.getElementById("gotoBox");
+
+    gotoBox.addEventListener("keypress", function(e) {
+        if (e.code === "Enter") {
+            gotoPage(gotoBox.value)
+        }
+    })
+
+
+    var previous = function() {
+        image_count -= 1;
+        imageCard.src = topic + "/" + image_count + ".png";
+        url.searchParams.set()
+    }
+    var next = function() {
+        image_count += 1;
+        imageCard.src = topic + "/" + image_count + ".png";
+    }
+    var gotoPage = function(page) {
+        // image_count = page;
+        image_count = gotoBox.value
+        console.log(image_count)
+        imageCard.src = topic + "/" + image_count + ".png";
+    }
+
+    var cryptid_sightings = function() {
+        topic = "cryptid_sightings";
+        image_count = 1;
+        imageCard.src = topic + "/" + image_count + ".png";
+        imageCard.classList.remove("border");
+    }
+
+
+</script>
+
+</html>
