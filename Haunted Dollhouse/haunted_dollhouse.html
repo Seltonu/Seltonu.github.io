@@ -96,19 +96,19 @@
     
     if (url.searchParams.has('comics')){
         topic = "comics"
-        image_count = url.searchParams.get('comics')
+        image_count = parseInt(url.searchParams.get('comics'))
     }
     else if (url.searchParams.has('cryptid_sightings')) {
         topic = "cryptid_sightings"
-        image_count = url.searchParams.get('cryptid_sightings')
+        image_count = parseInt(url.searchParams.get('cryptid_sightings'))
     }
     else if (url.searchParams.has('art')) {
-        topic = "Art"
-        image_count = url.searchParams.get('art')
+        topic = "art"
+        image_count = parseInt(url.searchParams.get('art'))
     }
     else if (url.searchParams.has('blog')) {
-        topic = "Blog"
-        image_count = url.searchParams.get('blog')
+        topic = "blog"
+        image_count = parseInt(url.searchParams.get('blog'))
     }
     
     document.getElementById('imageCard').src = topic + "/" + image_count + ".png";
@@ -125,7 +125,6 @@
     var previous = function() {
         image_count -= 1;
         imageCard.src = topic + "/" + image_count + ".png";
-        url.searchParams.set()
     }
     var next = function() {
         image_count += 1;
@@ -138,12 +137,6 @@
         imageCard.src = topic + "/" + image_count + ".png";
     }
 
-    var cryptid_sightings = function() {
-        topic = "cryptid_sightings";
-        image_count = 1;
-        imageCard.src = topic + "/" + image_count + ".png";
-        imageCard.classList.remove("border");
-    }
 
 
 </script>
